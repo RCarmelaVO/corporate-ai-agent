@@ -1,15 +1,17 @@
-from langchain_ollama import OllamaLLM
+from langchain_groq import ChatGroq
 from chatbot.retriever import load_retriever
-
+import os
 
 def create_assistant():
 
     retriever = load_retriever()
 
-    llm = OllamaLLM(
-        model="qwen2.5:1.5b",
+    llm = ChatGroq(
+        groq_api_key=os.getenv("GROQ_API_KEY"),
+        model="llama-3.3-70b-versatile",
         temperature=0
     )
+
 
 
     def ask(question):
