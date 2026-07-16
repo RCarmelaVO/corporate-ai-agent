@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_ollama import OllamaEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 # Importamos la función que ya creaste en el paso anterior
@@ -28,10 +28,10 @@ def create_vector_database():
 
     print(f"Chunks created: {len(chunks)}")
 
-    print("\nCreating embeddings with Ollama...")
+    print("\nCreating embeddings with HuggingFace...")
 
-    embeddings = OllamaEmbeddings(
-        model="nomic-embed-text"
+    embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
 
     print("\nCreating FAISS vector database...")
