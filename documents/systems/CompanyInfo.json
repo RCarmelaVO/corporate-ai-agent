@@ -1,0 +1,12 @@
+{
+  "company": "Digital Solutions SAC",
+  "country": "Peru",
+  "employees": 25,
+  "founded": 2021,
+  "services": [
+    "Web Development",
+    "Artificial Intelligence",
+    "Chatbots",
+    "Inventory Systems"
+  ]
+}
