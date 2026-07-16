@@ -34,7 +34,7 @@ if st.button("Ask"):
 
         st.subheader("Answer:")
 
-        st.write(answer)
+        st.write(answer.content)
 
     else:
 
