@@ -1,97 +1,124 @@
 # 🤖 Corporate AI Assistant
 
-An AI-powered corporate assistant built with **Python**, **LangChain**, **Ollama**, **FAISS**, and **Streamlit**. The assistant answers questions about company documents using Retrieval-Augmented Generation (RAG).
+An AI-powered corporate assistant designed to answer employee questions based on internal company documents using **Retrieval-Augmented Generation (RAG)**.
+
+The assistant processes multiple document formats, creates a semantic knowledge base using vector embeddings, retrieves relevant information, and generates answers through a Large Language Model.
 
 ---
 
-## 📌 Overview
+# 🌐 Live Demo
 
-Corporate AI Assistant allows employees to ask questions in natural language and receive answers based on internal company documents.
+The application is deployed and available online:
 
-Instead of relying only on the language model, the application searches relevant company documents stored in a FAISS vector database before generating an answer.
-
-This project demonstrates the implementation of a local RAG (Retrieval-Augmented Generation) application using open-source tools.
+https://corporate-ai-agent-9hww8gvxupthxr5t5raqvz.streamlit.app/
 
 ---
 
-## ✨ Features
+# 📌 Project Overview
 
-- 📄 Reads multiple document formats
-  - PDF
-  - DOCX
-  - XLSX
-  - CSV
-  - HTML
-  - Markdown
-  - JSON
-  - PPTX
+Corporate AI Assistant is a conversational knowledge system created for a fictional company.
 
-- 🔍 Semantic search using FAISS
+Employees can ask questions in natural language about internal documents related to:
 
-- 🧠 Local LLM powered by Ollama
+- Human Resources
+- Finance
+- Operations
+- Marketing
+- Legal and Compliance
+- Systems and APIs
+- Company Information
 
-- 💬 Streamlit web interface
-
-- 🔒 Runs completely offline
-
-- ⚡ Fast document retrieval
+The application uses a **Retrieval-Augmented Generation (RAG)** architecture, allowing the AI agent to search internal documents before generating responses.
 
 ---
 
-# 🏗 Project Architecture
+# 🎯 Challenge Objective
 
-```
+This project was developed as part of the **Alura Agentes Challenge**.
+
+The objective was to build an AI corporate agent capable of:
+
+- Answering employee questions using company documents
+- Processing multiple document formats
+- Creating a centralized knowledge base
+- Providing a conversational interface
+- Being available through a public URL
+
+---
+
+# ✨ Features
+
+## 📄 Document Processing
+
+Supports:
+
+- PDF
+- DOCX
+- XLSX
+- CSV
+- HTML
+- Markdown
+- JSON
+- PPTX
+
+## 🧠 AI Capabilities
+
+- Semantic document search
+- Retrieval-Augmented Generation (RAG)
+- FAISS Vector Database
+- Natural language question answering
+
+## 💻 User Interface
+
+- Streamlit Web Interface
+- Public Cloud Deployment
+
+---
+
+# 🏗 System Architecture
+
+```text
 User
-   │
-   ▼
-Streamlit Interface
-   │
-   ▼
-Assistant (LangChain)
-   │
-   ▼
-Retriever (FAISS)
-   │
-   ▼
-Relevant Documents
-   │
-   ▼
-Ollama (Qwen 2.5)
-   │
-   ▼
-Answer
+ │
+ ▼
+Streamlit Web Application
+ │
+ ▼
+AI Assistant (LangChain)
+ │
+ ▼
+Retriever
+ │
+ ▼
+FAISS Vector Database
+ │
+ ▼
+Relevant Company Documents
+ │
+ ▼
+LLM (Groq - Llama 3.3 70B)
+ │
+ ▼
+Generated Answer
 ```
 
 ---
 
 # 📂 Project Structure
 
-```
+```text
 corporate-ai-agent/
 │
 ├── chatbot/
 │   ├── assistant.py
 │   ├── retriever.py
 │   └── __init__.py
-│
 ├── documents/
-│   ├── communication/
-│   ├── finance/
-│   ├── hr/
-│   ├── legal/
-│   ├── marketing/
-│   ├── operations/
-│   └── systems/
-│
 ├── loaders/
-│   └── load_documents.py
-│
 ├── vectorstore/
 │   ├── create_vector_db.py
 │   └── faiss_index/
-│
 ├── screenshots/
-│
 ├── app.py
 ├── config.py
 ├── requirements.txt
@@ -103,51 +130,51 @@ corporate-ai-agent/
 
 ---
 
-# 🛠 Technologies
+# 🛠 Technologies Used
 
 - Python 3.13
 - LangChain
-- Ollama
-- Qwen2.5 1.5B
-- Nomic Embed Text
 - FAISS
 - Streamlit
+- Groq API
+- Llama 3.3 70B
+- HuggingFace Embeddings
+- Sentence Transformers
 - PyPDF
-- Docx2txt
 - Pandas
 - OpenPyXL
+- python-pptx
+- docx2txt
 
 ---
 
 # 📦 Installation
 
-Clone the repository
+## Clone repository
 
 ```bash
 git clone https://github.com/RCarmelaVO/corporate-ai-agent.git
 ```
 
-Go to the project
+## Access project
 
 ```bash
 cd corporate-ai-agent
 ```
 
-Create a virtual environment
+## Create virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate it
-
-### Windows
+## Activate (Windows)
 
 ```bash
 .venv\Scripts\activate
 ```
 
-Install dependencies
+## Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -155,31 +182,7 @@ pip install -r requirements.txt
 
 ---
 
-# 🤖 Install Ollama
-
-Download Ollama
-
-https://ollama.com
-
-Install the required models
-
-```bash
-ollama pull qwen2.5:1.5b
-```
-
-```bash
-ollama pull nomic-embed-text
-```
-
-Verify installation
-
-```bash
-ollama list
-```
-
----
-
-# ▶ Create the Vector Database
+# 🧠 Creating the Vector Database
 
 ```bash
 python -m vectorstore.create_vector_db
@@ -187,53 +190,15 @@ python -m vectorstore.create_vector_db
 
 ---
 
-# ✅ Test the Retriever
-
-```bash
-python test_retriever.py
-```
-
-Example output
-
-```
-Employee Handbook
-
-Expense Policy
-
-New Employee Onboarding
-```
-
----
-
-# ✅ Test the Assistant
-
-```bash
-python test_assistant.py
-```
-
-Example
-
-```
-Question:
-
-How many vacation days do employees receive?
-
-Answer:
-
-Employees receive 30 calendar days of paid vacation every year after completing one year of service.
-```
-
----
-
-# 🚀 Run the Web App
+# ▶ Running Locally
 
 ```bash
 streamlit run app.py
 ```
 
-Then open
+Open:
 
-```
+```text
 http://localhost:8501
 ```
 
@@ -245,59 +210,61 @@ http://localhost:8501
 
 ![Home](screenshots/home.png)
 
----
+## Question and Answer
 
-## Question Example
+![Question](screenshots/question-answer.png)
 
-![Question](screenshots/question.png)
+## Public Deployment
 
----
-
-## Oracle Cloud Deployment
-
-![Oracle Cloud](screenshots/oracle-cloud.png)
+![Deployment](screenshots/deployment.png)
 
 ---
 
-# 📚 Example Questions
+# 💬 Example Question
 
-- How many vacation days do employees receive?
+**Question**
 
-- What are the working hours?
+```text
+What products and prices are available?
+```
 
-- Can employees work remotely?
+**Answer**
 
-- What expenses can be reimbursed?
+```text
+Website Development - $1500
+Chatbot Development - $900
+Inventory System - $2500
+AI Automation - $3000
+Mobile App - $5000
+```
 
-- What happens during employee onboarding?
+---
+
+# 🚀 Deployment
+
+Deployed on Streamlit Cloud.
+
+Public URL:
+
+https://corporate-ai-agent-9hww8gvxupthxr5t5raqvz.streamlit.app/
 
 ---
 
 # 🔮 Future Improvements
 
 - Conversation memory
-
+- User authentication
 - Chat history
-
 - OCR support
-
-- Multi-user authentication
-
-- Voice input
-
-- Oracle Cloud deployment
-
-- Docker support
-
+- Voice interaction
+- Docker deployment
 - API integration
 
 ---
 
 # 📄 License
 
-This project is licensed under the MIT License.
-
-See the LICENSE file for more information.
+MIT License.
 
 ---
 
